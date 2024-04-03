@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:27:01 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/02 18:21:02 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/03 12:38:24 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,57 +58,19 @@ int	check_arg(char *args)
 	return (1);
 }
 
-int check_nums(t_philo *philo, int argc)
-{
-    if (philo->num_of_philos < 0 || philo->time_to_die < 0
-        || philo->time_to_eat < 0 || philo->time_to_sleep < 0)
-        return (0);
-    if (argc == 6 && philo->last_meal < 0)
-        return (0);
-    return (1);
-}
-
-t_philo *fill_struct(char **argv, int argc)
-{
-    t_philo *philo;
-    int i;
-
-    i = 1;
-    philo = malloc(1 * sizeof(t_philo));
-    if (!philo)
-    {
-        ft_putstr_fd(MALLOC_ERROR, 2);
-        return (0);
-    }
-    philo->num_of_philos = ft_atoll(argv[1]);
-    philo->time_to_die = ft_atoll(argv[2]);
-    philo->time_to_eat = ft_atoll(argv[3]);
-    philo->time_to_sleep = ft_atoll(argv[4]);
-    if (argc == 6)
-        philo->last_meal = ft_atoll(argv[5]);
-    else
-        philo->last_meal = -1;
-    if (!check_nums(philo, argc))
-    {
-        free (philo);
-        return (0);
-    }
-    return (philo);
-}
-
 int check_argv(char **argv, int argc)
 {
-    int i;
+	int i;
 
-    i = 1;
-    while (i < argc)
-    {
-        if (!check_arg(argv[i]))
-        {
-            ft_putstr_fd(INVALID_ARGUMENT, 2);
-            return (0);
-        }
-        i++;
-    }
-    return (1);
+	i = 1;
+	while (i < argc)
+	{
+		if (!check_arg(argv[i]))
+		{
+			ft_putstr_fd(INVALID_ARGUMENT, 2);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }

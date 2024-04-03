@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 10:42:30 by roguigna          #+#    #+#              #
-#    Updated: 2024/04/02 17:56:15 by roguigna         ###   ########.fr        #
+#    Updated: 2024/04/03 13:33:56 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC_DIR			= sources
 
 OBJ_DIR			= object
 
-SRC_FILES		= philosophers.c utils.c parsing.c
+SRC_FILES		= philosophers.c utils.c parsing.c fill_struct.c free_all.c
 
 OBJ             = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
