@@ -6,16 +6,36 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:19:01 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/03 14:09:24 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:02:51 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
+void	free_philos(t_table *table)
+{
+	int	i;
+
+	i = 0;
+	while (table->philos[i].num_of_philos)
+	{
+		if (table->philos[i].r_fork)
+		{
+			pthread_mutex_destroy(table->philos[i].r_fork);
+			free(table->philos[i].l_fork);
+		}
+		i++;
+	}
+	pthread_mutex_destroy(&table->dead_lock);
+	pthread_mutex_destroy(&table->meal_lock);
+	pthread_mutex_destroy(&table->write_lock);
+	free(table->philos);
+}
+
 void    free_all(t_table *table)
 {
 	if (table->philos)
-		free(table->philos);
+		free_philos(table);
 	if (table)
 		free(table);
 }
