@@ -34,9 +34,9 @@ typedef struct s_philo
 	int				meals_required;
 	int				meals_eaten;
 	size_t			last_meal;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
+	long long int	time_to_die;
+	long long int	time_to_eat;
+	long long int	time_to_sleep;
 	size_t			start_time;
 	pthread_t		thread;
 	pthread_mutex_t	*r_fork;
