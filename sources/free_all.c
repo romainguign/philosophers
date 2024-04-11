@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:19:01 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/04 19:02:51 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:47:48 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_philos(t_table *table)
 	int	i;
 
 	i = 0;
-	while (table->philos[i].num_of_philos)
+	while (i < table->philos[0].num_of_philos)
 	{
 		if (table->philos[i].r_fork)
 		{
@@ -32,7 +32,7 @@ void	free_philos(t_table *table)
 	free(table->philos);
 }
 
-void    free_all(t_table *table)
+void	free_all(t_table *table)
 {
 	if (table->philos)
 		free_philos(table);

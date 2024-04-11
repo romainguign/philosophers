@@ -6,17 +6,17 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:27:01 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/04 17:30:19 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:54:11 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-size_t	ft_ato_size_t(const char *nptr)
+long long int	ft_atoll(const char *nptr)
 {
-	size_t	i;
-	size_t	nbr;
-	size_t	negative;
+	long long int	i;
+	long long int	nbr;
+	long long int	negative;
 
 	i = 0;
 	nbr = 0;
@@ -58,9 +58,9 @@ int	check_arg(char *args)
 	return (1);
 }
 
-int check_argv(char **argv, int argc)
+int	check_argv(char **argv, int argc)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i < argc)

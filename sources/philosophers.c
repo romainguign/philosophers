@@ -6,35 +6,45 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:49:15 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/04 17:34:13 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:00:21 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int		exec_threads(t_table *table)
+int	exec_threads(t_table *table)
 {
 	int	i;
 
 	i = 0;
 	while (i < table->philos->num_of_philos)
 	{
-		pthread_create(&table->philos[i].thread, NULL, ft_routine,  &table->philos[i]);
+		if (pthread_create(&table->philos[i].thread, NULL, ft_routine,
+				&table->philos[i]))
+		{
+			ft_putstr_fd(THREAD_ERROR, 2);
+			return (0);
+		}
 		i++;
 	}
+	philo_monitoring(table);
 	i = 0;
 	while (i < table->philos->num_of_philos)
 	{
-		pthread_join(table->philos[i].thread, NULL);
+		if (pthread_join(table->philos[i].thread, NULL))
+		{
+			ft_putstr_fd(JOIN_ERROR, 2);
+			return (0);
+		}
 		i++;
 	}
 	return (1);
 }
 
-int		init_threads(t_table *table)
+int	init_threads(t_table *table)
 {
 	int	i;
-	
+
 	pthread_mutex_init(&table->write_lock, NULL);
 	pthread_mutex_init(&table->dead_lock, NULL);
 	pthread_mutex_init(&table->meal_lock, NULL);
@@ -62,7 +72,7 @@ int		init_threads(t_table *table)
 
 t_table	*init_philo(char **argv, int argc)
 {
-	t_table *table;
+	t_table	*table;
 
 	if (!check_argv(argv, argc))
 		return (0);
@@ -89,8 +99,11 @@ int	main(int argc, char **argv)
 	table = init_philo(argv, argc);
 	if (!table)
 		return (1);
-	if(!exec_threads(table))
+	if (!exec_threads(table))
+	{
+		free_all(table);
 		return (1);
+	}
 	free_all(table);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:35:30 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/04 19:46:46 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:57:47 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	state_message(t_philo *philo, char *message)
 {
-	size_t  time;
+	size_t	time;
 
 	if (!is_finish(philo))
 		return ;

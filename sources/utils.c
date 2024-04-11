@@ -6,20 +6,20 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 17:18:59 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/03 10:14:55 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:56:12 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 void	ft_putstr_fd(char *s, int fd)

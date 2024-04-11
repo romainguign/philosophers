@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 10:42:30 by roguigna          #+#    #+#              #
-#    Updated: 2024/04/04 17:36:46 by roguigna         ###   ########.fr        #
+#    Updated: 2024/04/11 16:08:40 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME			= philosophers
 
 CC				= cc
 
-CFLAGS 			= -Wall -Wextra -pthread -g3 #-Werror
+CFLAGS 			= -Wall -Wextra -Werror -pthread -g3 
 
 INCLUDE			= -I libft/includes -I includes
 
@@ -39,7 +39,7 @@ SRC_DIR			= sources
 OBJ_DIR			= object
 
 SRC_FILES		= philosophers.c utils.c parsing.c fill_struct.c free_all.c \
-				  routine.c message.c
+				  routine.c message.c monitoring.c
 
 OBJ             = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
