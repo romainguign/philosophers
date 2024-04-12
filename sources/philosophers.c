@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 10:49:15 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/11 16:00:21 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:40:07 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,15 @@ int	init_threads(t_table *table)
 			return (0);
 		}
 		pthread_mutex_init(table->philos[i].l_fork, NULL);
-		if (i + 1 < table->philos[i].num_of_philos)
-			table->philos[i + 1].r_fork = table->philos[i].l_fork;
+		// if (i + 1 < table->philos[i].num_of_philos)
+		// 	table->philos[i + 1].r_fork = table->philos[i].l_fork;
 		table->philos[i].write_lock = &table->write_lock;
 		table->philos[i].dead_lock = &table->dead_lock;
 		table->philos[i].meal_lock = &table->meal_lock;
 		i++;
 	}
-	if (table->philos[i].num_of_philos != 1)
-		table->philos[0].r_fork = table->philos[i - 1].l_fork;
+	// if (table->philos[i].num_of_philos != 1)
+	// 	table->philos[0].r_fork = table->philos[i - 1].l_fork;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:14:58 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/11 15:55:47 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:30:05 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	sleeping(t_philo *philo)
 	if (philo->time_to_die <= philo->time_to_sleep)
 		return ;
 	state_message(philo, SLEEPING_MESSAGE);
-	usleep(philo->time_to_sleep * 1000);
+	ft_sleep(philo->time_to_sleep);
 }
 
 void	eating(t_philo *philo)
 {
 	if (philo->num_of_philos == 1)
 	{
-		usleep(philo->time_to_die * 1000 + 1000);
+		ft_sleep(philo->time_to_die + 2);
 		is_finish(philo);
 		return ;
 	}
@@ -39,7 +39,7 @@ void	eating(t_philo *philo)
 	philo->meals_eaten++;
 	philo->last_meal = get_current_time();
 	pthread_mutex_unlock(philo->meal_lock);
-	usleep(philo->time_to_eat * 1000);
+	ft_sleep(philo->time_to_eat);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 }
@@ -62,7 +62,7 @@ void	*ft_routine(void *data)
 
 	philo = (t_philo *)data;
 	if (philo->id % 2 == 0)
-		usleep(1000);
+		ft_sleep(10);
 	while (is_finish(philo))
 	{
 		if (is_finish(philo) == 0)

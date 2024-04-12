@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 10:03:42 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/11 16:09:52 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:19:09 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	check_if_all_eat(t_table *table)
 		return (1);
 	while (i < table->philos[0].num_of_philos)
 	{
-		if (table->philos[i].meals_eaten <= table->philos[0].meals_required)
+		if (table->philos[i].meals_eaten < table->philos[0].meals_required)
 		{
 			pthread_mutex_unlock(&table->meal_lock);
 			return (1);
@@ -67,6 +67,7 @@ void	philo_monitoring(t_table *table)
 {
 	while (1)
 	{
+		usleep(10);
 		if (!check_if_all_eat(table) || !check_if_someone_died(table))
 			break ;
 	}

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:58:10 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/11 16:01:54 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/12 10:10:10 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void			ft_putstr_fd(char *s, int fd);
 void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_strlen(char *str);
 int				ft_isdigit(int c);
+void    		ft_sleep(size_t    overclock);
+void			state_message(t_philo *philo, char *message);
 
 //parsing:
 int				check_argv(char **argv, int argc);
@@ -82,9 +84,6 @@ int				is_finish(t_philo *philo);
 
 //monitoring
 void			philo_monitoring(t_table *table);
-
-//message:
-void			state_message(t_philo *philo, char *message);
 
 //free
 void			free_all(t_table *table);
