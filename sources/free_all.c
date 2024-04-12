@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 13:19:01 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/11 15:47:48 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/12 13:47:20 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	free_philos(t_table *table)
 	i = 0;
 	while (i < table->philos[0].num_of_philos)
 	{
-		if (table->philos[i].r_fork)
+		if (table->philos[i].l_fork)
 		{
-			pthread_mutex_destroy(table->philos[i].r_fork);
+			pthread_mutex_destroy(table->philos[i].l_fork);
 			free(table->philos[i].l_fork);
 		}
 		i++;

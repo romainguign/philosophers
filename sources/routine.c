@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:14:58 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/12 10:30:05 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/12 13:53:36 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@ void	sleeping(t_philo *philo)
 	ft_sleep(philo->time_to_sleep);
 }
 
+void	take_forks(t_philo *philo)
+{
+	if (philo->id % 2 == 0)
+	{
+		pthread_mutex_lock(philo->l_fork);
+		state_message(philo, FORK_MESSAGE);
+		pthread_mutex_lock(philo->r_fork);
+		state_message(philo, FORK_MESSAGE);
+	}
+	else
+	{
+		pthread_mutex_lock(philo->r_fork);
+		state_message(philo, FORK_MESSAGE);
+		pthread_mutex_lock(philo->l_fork);
+		state_message(philo, FORK_MESSAGE);
+	}
+}
+
 void	eating(t_philo *philo)
 {
 	if (philo->num_of_philos == 1)
@@ -30,10 +48,7 @@ void	eating(t_philo *philo)
 		is_finish(philo);
 		return ;
 	}
-	pthread_mutex_lock(philo->l_fork);
-	state_message(philo, FORK_MESSAGE);
-	pthread_mutex_lock(philo->r_fork);
-	state_message(philo, FORK_MESSAGE);
+	take_forks(philo);
 	state_message(philo, EATING_MESSAGE);
 	pthread_mutex_lock(philo->meal_lock);
 	philo->meals_eaten++;
