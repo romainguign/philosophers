@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 10:42:30 by roguigna          #+#    #+#              #
-#    Updated: 2024/04/12 11:11:24 by roguigna         ###   ########.fr        #
+#    Updated: 2024/04/12 15:10:41 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC				= cc
 
 CFLAGS 			= -Wall -Wextra -Werror -pthread -g3
 
-INCLUDE			= -I libft/includes -I includes
+INCLUDE			= -I includes
 
 
 ##############################  COLORS  ###################################

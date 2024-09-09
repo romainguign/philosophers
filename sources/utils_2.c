@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:35:30 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/12 13:51:49 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:25:33 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ void	ft_sleep(size_t overclock)
 
 	start = get_current_time();
 	while (get_current_time() - start < overclock)
-		usleep(500);
+		usleep(1);
 }

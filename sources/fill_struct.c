@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 12:37:55 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/12 11:06:43 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/04/12 14:20:56 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,24 @@ int	fill_infos(char **argv, int argc, t_table *table)
 	return (1);
 }
 
+t_philo	*alloc_struct(char **argv)
+{
+	t_philo	*philos;
+
+	if (ft_atoll(argv[1]) < 1)
+	{
+		ft_putstr_fd(INVALID_ARGUMENT, 2);
+		return (0);
+	}
+	philos = ft_calloc(ft_atoll(argv[1]) + 1, sizeof(t_philo));
+	if (!philos)
+	{
+		ft_putstr_fd(MALLOC_ERROR, 2);
+		return (0);
+	}
+	return (philos);
+}
+
 t_table	*fill_struct(char **argv, int argc)
 {
 	t_table	*table;
@@ -83,10 +101,9 @@ t_table	*fill_struct(char **argv, int argc)
 		ft_putstr_fd(MALLOC_ERROR, 2);
 		return (0);
 	}
-	table->philos = ft_calloc(ft_atoll(argv[1]) + 1, sizeof(t_philo));
+	table->philos = alloc_struct(argv);
 	if (!table->philos)
 	{
-		ft_putstr_fd(MALLOC_ERROR, 2);
 		free(table);
 		return (0);
 	}

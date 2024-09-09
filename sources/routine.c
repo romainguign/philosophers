@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 15:14:58 by roguigna          #+#    #+#             */
-/*   Updated: 2024/04/12 13:53:36 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/18 17:44:37 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sleeping(t_philo *philo)
 
 void	take_forks(t_philo *philo)
 {
-	if (philo->id % 2 == 0)
+	if (philo->id == 1)
 	{
 		pthread_mutex_lock(philo->l_fork);
 		state_message(philo, FORK_MESSAGE);
@@ -36,15 +36,16 @@ void	take_forks(t_philo *philo)
 		pthread_mutex_lock(philo->r_fork);
 		state_message(philo, FORK_MESSAGE);
 		pthread_mutex_lock(philo->l_fork);
-		state_message(philo, FORK_MESSAGE);
 	}
+	state_message(philo, FORK_MESSAGE);
 }
 
 void	eating(t_philo *philo)
 {
 	if (philo->num_of_philos == 1)
 	{
-		ft_sleep(philo->time_to_die + 2);
+		state_message(philo, FORK_MESSAGE);
+		ft_sleep(philo->time_to_die + 1);
 		is_finish(philo);
 		return ;
 	}
